@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-**Project Name**: RAG-QA: Research Paper Question Answering System  
+**Project Name**: rag-research-qa  
 **Objective**: Build a production-grade Retrieval-Augmented Generation system for question answering on AI research papers with hybrid retrieval, dual embedding comparison, and comprehensive source attribution.
 
 **Source Documents**:
@@ -467,7 +467,7 @@ EVALUATION_QUESTIONS = [
 ### 8. Project Structure
 
 ```
-rag-qa-system/
+rag-research-qa/
 ├── README.md
 ├── TECH_SPECS.md
 ├── ATOMIC_STEPS.md

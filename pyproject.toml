@@ -3,9 +3,9 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "rag-qa-system"
+name = "rag-research-qa"
 version = "0.1.0"
-description = "RAG Question-Answering System for AI Research Papers"
+description = "Retrieval-Augmented Generation system for question answering on AI research papers. Features hybrid retrieval (BM25 + dense), cross-encoder reranking, dual embedding comparison, and source attribution."
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}

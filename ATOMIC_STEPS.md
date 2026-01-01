@@ -1,4 +1,4 @@
-# RAG-QA System - Atomic Implementation Steps
+# rag-research-qa - Atomic Implementation Steps
 
 ## Overview
 
@@ -18,8 +18,8 @@ Each step includes:
 **Action**: Create directory structure and initialize Python project
 
 ```bash
-mkdir -p rag-qa-system/{src/{preprocessing,embeddings,retrieval,generation,pipeline,api},tests,notebooks,data/{papers,chroma_db},scripts}
-cd rag-qa-system
+mkdir -p rag-research-qa/{src/{preprocessing,embeddings,retrieval,generation,pipeline,api},tests,notebooks,data/{papers,chroma_db},scripts}
+cd rag-research-qa
 touch src/__init__.py src/preprocessing/__init__.py src/embeddings/__init__.py 
 touch src/retrieval/__init__.py src/generation/__init__.py src/pipeline/__init__.py src/api/__init__.py
 touch tests/__init__.py tests/conftest.py

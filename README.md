@@ -1,6 +1,6 @@
-# RAG-QA System
+# rag-research-qa
 
-A production-grade Retrieval-Augmented Generation (RAG) system for Question Answering on AI research papers.
+Retrieval-Augmented Generation system for question answering on AI research papers. Features hybrid retrieval (BM25 + dense), cross-encoder reranking, dual embedding comparison, and source attribution.
 
 ## Features
 
@@ -26,8 +26,8 @@ The system is designed to answer questions about these seminal AI papers:
 ### 1. Clone and Setup
 
 ```bash
-git clone <repository-url>
-cd rag-qa-system
+git clone https://github.com/YOUR_USERNAME/rag-research-qa.git
+cd rag-research-qa
 
 # Create virtual environment
 python -m venv venv

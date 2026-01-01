@@ -45,11 +45,14 @@ class OpenAIEmbeddings(EmbeddingProvider):
             return np.array([])
 
         all_embeddings = []
+        total_batches = (len(texts) + self._batch_size - 1) // self._batch_size
 
         # Process in batches
         for i in range(0, len(texts), self._batch_size):
             batch = texts[i:i + self._batch_size]
-            logger.debug(f"Embedding batch {i // self._batch_size + 1}")
+            batch_num = i // self._batch_size + 1
+            if total_batches > 1:
+                logger.debug(f"Embedding batch {batch_num}/{total_batches}")
             embeddings = self._embed_batch(batch)
             all_embeddings.extend(embeddings)
 

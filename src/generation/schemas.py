@@ -3,16 +3,7 @@
 from typing import List, Optional, Dict, Any
 from pydantic import BaseModel, Field
 
-
-class SourceAttribution(BaseModel):
-    """Source attribution for an answer."""
-    source_index: int
-    chunk_id: str
-    paper_title: str
-    section: Optional[str] = None
-    page_numbers: List[int] = Field(default_factory=list)
-    relevance_score: float
-    excerpt: str
+from .citation_formatter import SourceAttribution
 
 
 class AnswerResponse(BaseModel):

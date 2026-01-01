@@ -26,12 +26,12 @@ The system is designed to answer questions about these seminal AI papers:
 ### 1. Clone and Setup
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/rag-research-qa.git
+git clone https://github.com/crowbarmassage/rag-research-qa.git
 cd rag-research-qa
 
 # Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
@@ -68,28 +68,35 @@ uvicorn src.api.main:app --reload
 ### 6. Query the System
 
 ```bash
+# Via API
 curl -X POST "http://localhost:8000/query" \
   -H "Content-Type: application/json" \
   -d '{"question": "What is multi-head attention?"}'
+
+# Or use the interactive CLI
+python scripts/query_cli.py -i
 ```
 
 ## Project Structure
 
 ```
-rag-qa-system/
+rag-research-qa/
 ├── src/
-│   ├── preprocessing/    # PDF parsing, chunking
-│   ├── embeddings/       # OpenAI & open-source embeddings
-│   ├── retrieval/        # Vector store, BM25, hybrid retrieval
-│   ├── generation/       # Context building, LLM generation
-│   ├── pipeline/         # End-to-end RAG pipeline
-│   └── api/              # FastAPI endpoints
-├── tests/                # pytest test suite
-├── notebooks/            # Jupyter notebook demo
+│   ├── config.py             # Pydantic settings
+│   ├── preprocessing/        # PDF parsing, chunking
+│   ├── embeddings/           # OpenAI & open-source embeddings
+│   ├── retrieval/            # Vector store, BM25, hybrid retrieval
+│   ├── generation/           # Context building, LLM generation
+│   ├── pipeline/             # End-to-end RAG pipeline
+│   └── api/                  # FastAPI endpoints
+├── tests/                    # pytest test suite (59 tests)
 ├── data/
-│   ├── papers/           # Source PDFs
-│   └── chroma_db/        # Vector store persistence
-└── scripts/              # CLI utilities
+│   ├── papers/               # Source PDFs
+│   └── chroma_db/            # Vector store persistence
+└── scripts/
+    ├── index_documents.py    # Index PDFs into ChromaDB
+    ├── query_cli.py          # Interactive CLI
+    └── evaluate.py           # Run evaluation suite
 ```
 
 ## API Endpoints

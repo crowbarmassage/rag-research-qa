@@ -1,11 +1,17 @@
 """Cross-encoder reranking."""
 
 from typing import List, Tuple, Dict
+import numpy as np
 import torch
 from sentence_transformers import CrossEncoder
 from loguru import logger
 
 from src.config import settings
+
+
+def sigmoid(x):
+    """Apply sigmoid to convert logits to probabilities."""
+    return 1 / (1 + np.exp(-np.clip(x, -500, 500)))
 
 
 class CrossEncoderReranker:
@@ -81,11 +87,14 @@ class CrossEncoderReranker:
         pairs = [(query, c["content"]) for c in candidates]
 
         # Score with cross-encoder
-        scores = self.model.predict(pairs)
+        raw_scores = self.model.predict(pairs)
+
+        # Normalize scores to 0-1 using sigmoid
+        normalized_scores = sigmoid(np.array(raw_scores))
 
         # Update scores and sort
         for i, candidate in enumerate(candidates):
-            candidate["rerank_score"] = float(scores[i])
+            candidate["rerank_score"] = float(normalized_scores[i])
 
         reranked = sorted(
             candidates,
